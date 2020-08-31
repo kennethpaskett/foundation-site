@@ -17,3 +17,4 @@ notifications:
   commits:      site-cvs@apache.org
   issues:       centralservices@apache.org
   pullrequests: centralservices@apache.org
+
