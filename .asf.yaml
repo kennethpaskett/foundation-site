@@ -6,4 +6,14 @@ pelican:
 staging:
   whoami: asf-site
 
+github:
+  description: ASF Foundation Website
+  homepage:    https://www.apache.org/
+  labels:
+    - website
+    - pelican
 
+notifications:
+  commits:      site-cvs@apache.org
+  issues:       centralservices@apache.org
+  pullrequests: centralservices@apache.org
