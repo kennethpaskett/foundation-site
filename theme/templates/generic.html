@@ -1,0 +1,16 @@
+    <!-- bread crumb -->
+    <div class="container">
+    		<h2>
+            {% if article %}
+              {{ article.title }}
+            {% else %}
+              {{ page.title }}
+            {% endif %}
+          </h2>
+          {% if article %}
+              {{ article.content }}
+            {% else %}
+              {{ page.content }}
+            {% endif %}
+    </div>
+

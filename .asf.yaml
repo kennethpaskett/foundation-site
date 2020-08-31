@@ -1,0 +1,9 @@
+pelican:
+  notify:         site-cvs@apache.org
+  autobuild:      true
+  target:         asf-site
+  
+staging:
+  whoami: asf-site
+
+

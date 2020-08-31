@@ -1,0 +1,136 @@
+{% block head %}
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{SITENAME}}</title>
+    {% include "styles.html" %}
+  </head>
+  <body>
+    {% include "menu.html" %}
+    {% include "submenu.html" %}
+    
+    <!-- Intro here ... -->
+    <div class="container">
+    		Intro goes here...
+    </div>
+    
+    <!-- Metrics -->
+    <section>
+	<div class="container">
+	<div class="row">
+		<div class="col-sm-12 text-center">
+		<h3>The World's Largest Open Source Foundation</h3>
+		</div>
+		<div class="col-sm-4 col-sm-offset-2">
+		<ul>
+			<li>227M+ lines of code in&nbsp;stewardship</li>
+			<li>4.2B+ lines of code&nbsp;changed</li>
+			<li>3.9M+ code commits</li>
+			<li>813 individual ASF&nbsp;Members</li>
+			<li>8,000+ Apache Committers</li>
+			<li>39,000+ code contributors</li>
+			<li>460,000+ people involved in our&nbsp;communities</li>
+			<li>All volunteer community</li>
+		</ul>
+		</div>
+		<div class="col-sm-4">
+		<ul>
+			<li>350+ Projects and Initiatives</li>
+			<li>300+ Top-Level Projects</li>
+			<li>45 podlings in the Apache&nbsp;Incubator</li>
+			<li>~2 Petabytes source code downloads from Apache&nbsp;mirrors</li>
+			<li>24M+ emails across 1,400+ mailing&nbsp;lists</li>
+			<li>Web requests received from every Internet-connected country on the&nbsp;planet</li>
+			<li>35M+ weekly page views across <a href="https://apache.org">apache.org</a></li>
+		</ul>
+		</div>
+		<div class="col-sm-8 col-sm-offset-2 text-center">
+		<p><a href="https://s.apache.org/FY2020AnnualReport-PR">$20B+ worth of Apache Open Source software products are made available to the public-at-large at 100% no cost, and benefit billions of users around the&nbsp;world.</a>
+		</p>
+		</div>
+	</div>
+	<div id="video" class="row" style="margin-bottom: 30px;">
+		<script>
+		function swapVideo(videoUrl) {
+			document.getElementById("trillionsVideos").src = videoUrl;
+		}
+		</script>
+		<div class="col-sm-8 col-sm-offset-2" style="padding-top: 30px;">
+		<div class="video-responsive">
+			<iframe id="trillionsVideos" width="560" height="315" src="https://www.youtube.com/embed/JUt2nb0mgwg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
+		</div>
+	</div>
+	<div id="video-thumbnails" class="row">
+		<div class="col-xs-6 col-sm-2 col-sm-offset-2">
+		<button onclick="swapVideo('https://www.youtube.com/embed/YM5dLvNatRs?autoplay=1&rel=0')"><img class="img-responsive" src="/theme/img/trillions-and-trillions/why-apache-thumbail.jpg" alt="Why Apache?" /></button>
+		</div>
+		<div class="col-xs-6 col-sm-2">
+		<button onclick="swapVideo('https://www.youtube.com/embed/nXtIti9jMFI?autoplay=1&rel=0')"><img class="img-responsive" src="/theme/img/trillions-and-trillions/apache-everywhere-thumbnail.jpg" alt="Apache Everywhere" /></button>
+		</div>
+		<div class="col-xs-6 col-sm-2">
+		<button onclick="swapVideo('https://www.youtube.com/embed/JUt2nb0mgwg?autoplay=1&rel=0')"><img class="img-responsive" src="/theme/img/trillions-and-trillions/trillions-and-trillions-thumbnail.jpg" alt="Trillions and Trillions Served" /></button>
+		</div>
+		<div class="col-xs-6 col-sm-2">
+		<button onclick="swapVideo('https://www.youtube.com/embed/qkvqJaX4S50?autoplay=1&rel=0')"><img class="img-responsive" src="/theme/img/trillions-and-trillions/apache-innovation-thumbnail.jpg" alt="Apache Innovation" /></button>
+		</div>
+	</div>
+	</div>
+</section>
+    
+    <!-- news -->
+    <div class="container">
+        <h2>New articles:</h2>
+        <hr/>
+          {% endblock %}
+          
+          {%block content %}
+          
+          {% if articles %}
+              {% for article in articles_page.object_list %}        
+          
+                  {# First item #}
+              
+                      <aside id="featured">
+                          <div class="body">
+                              <article>
+                                  <h4><a href="{{ article.url }}">{{ article.title }}</a> - {{ article.date|strftime('%d %B %Y') }}</h4>
+                                  {{ article.summary }}
+                              </article>
+              {% if loop.last and (articles_page.has_previous() or not articles_page.has_previous() and loop.length > 1) %} 
+                              {% include 'pagination.html' %}
+                          {% endif %}
+                          <hr/>
+                          </div>
+                      </aside><!-- /#featured -->
+                      
+                  
+              {% endfor %}
+          {% else %}
+          <!--
+          <section id="content" >
+              <div class="body">
+              <h2>Pages</h2>
+                  {% for page in PAGES %}
+                      <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                  {% endfor %}
+              </div>
+          </section>
+          -->
+          {% endif %}
+          {% endblock %}
+
+    </div>
+    
+    {% include "footer.html" %}
+    <script src="/theme/js/vendor/jquery.js"></script>
+    <script src="/theme/js/vendor/what-input.js"></script>
+    <script src="/theme/js/vendor/foundation.js"></script>
+    <script src="/theme/js/app.js"></script>
+    
+    <script src="https://v878zkhv9tmg.statuspage.io/embed/script.js"></script>
+  </body>
+</html>
